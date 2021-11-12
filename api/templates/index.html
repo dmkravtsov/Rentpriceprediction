@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>USA rent predictor</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type='text/css' href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+ <div class="login">
+	  <h2>USA rent predictor</h2>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+
+
+        <input type="number" name="Latitude" placeholder=" Latitude: format xx.xxxxxx" pattern="[0-9]+([\.,][0-9]+)?" step="0.000001" required />
+        <input type="number" name="Longitude" placeholder=" Longitude: positive only, format xx.xxxxxx" pattern="[0-9]+([\.,][0-9]+)?" step="0.000001" required />
+        <input type="number" name="PostalCode" placeholder=" US ZIP: between 1001 and 99950" min="1001" max="99950" required/>
+        <input type="text" name="StatelCode" placeholder=" StatelCode: 2 letters required" pattern="[A-Z]{2}" style="text-transform:uppercase" required />
+        <input type="text" name="City" placeholder=" City: Letters only required" pattern="[A-Za-z\s]{3,}" style="text-transform:capitalize" required/>
+        <input type="text" name="Neighborhood" placeholder=" Neighborhood: Letters only required" pattern="[A-Za-z\s]{3,}" style="text-transform:capitalize" />
+        <input type="text" name="PropertyType" placeholder=" PropertyType: Letters only required" pattern="[A-Za-z\_]+" style="text-transform:lowercase" />
+        <input type="number" name="YearBuilt" placeholder=" YearBuilt: 4 digits required" pattern="[0-9]{4}" />
+        <input type="number" name="Beds" placeholder="Beds: digits required" min="0" step="1" />
+        <input type="number" name="Baths" placeholder=" Baths: digits required" min="0" step="1" />
+
+
+                  <button type="submit" class="btn btn-primary btn-block btn-large">PREDICT PRICE</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
