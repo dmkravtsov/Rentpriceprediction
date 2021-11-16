@@ -116,7 +116,9 @@ def main(df):
     # save the model to disk
     filename = '../models/finalized_model.pkl'
     # joblib.dump(rf, open(filename,'wb'),  compress=3, protocol=-1)
-    joblib.dump(rf, open(filename,'wb'),  compress=9, protocol=-1)
+
+    with open(filename, 'wb') as f:
+       joblib.dump(rf, f, compress=('lzma', 3))
 
     return print ('Model has been saved!')
 
