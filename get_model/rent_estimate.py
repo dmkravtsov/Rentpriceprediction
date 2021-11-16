@@ -103,7 +103,7 @@ def main(df):
     del df
     gc.collect()
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=SEED)
-    print(X_train.head(2))
+    # print(X_train.head(2))
     rf = RandomForestRegressor(max_depth=30, n_estimators=100, random_state=2020, n_jobs=-1)
     rf.fit(X_train, y_train)
     scores = (-1 * cross_val_score(rf, X_train, y_train,
@@ -115,7 +115,9 @@ def main(df):
     gc.collect()
     # save the model to disk
     filename = '../models/finalized_model.pkl'
-    joblib.dump(rf, open(filename,'wb'),  compress=3, protocol=-1)
+    # joblib.dump(rf, open(filename,'wb'),  compress=3, protocol=-1)
+    joblib.dump(rf, open(filename,'wb'),  compress=9, protocol=-1)
+
     return print ('Model has been saved!')
 
 # model = model(df)
