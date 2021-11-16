@@ -59,7 +59,7 @@ def feature_extractor(df):
 
 # create instance of Flask app
 app = Flask(__name__)
-model = joblib.load(open('finalized_model.pkl', 'rb'))
+model = joblib.load(open('../models/finalized_model.pkl', 'rb'))
 
 
 @app.route('/')

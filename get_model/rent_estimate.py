@@ -114,7 +114,7 @@ def main(df):
     del X_train, X_test, y_train, y_test
     gc.collect()
     # save the model to disk
-    filename = 'finalized_model.pkl'
+    filename = '../models/finalized_model.pkl'
     joblib.dump(rf, open(filename,'wb'),  compress=3, protocol=-1)
     return print ('Model has been saved!')
 
