@@ -118,7 +118,7 @@ def main(df):
     # joblib.dump(rf, open(filename,'wb'),  compress=3, protocol=-1)
 
     with open(filename, 'wb') as f:
-       joblib.dump(rf, f, compress=('lzma', 3))
+       joblib.dump(rf, f, compress=('lzma', 2))
 
     return print ('Model has been saved!')
 
